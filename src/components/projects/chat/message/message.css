@@ -1,0 +1,41 @@
+/* img {
+  margin-right: 1em;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+} */
+.project_messages {
+  width: 100%;
+  padding: 1em;
+  justify-content: space-between;
+  color: #482880;
+  overflow-x: hidden;
+}
+/* .all_project_messages {
+  height: 400px;
+  overflow-y: scroll;
+} */
+
+.each_project_message {
+  display: flex;
+}
+
+.project_message_user > p {
+  font-weight: bold;
+}
+
+.project_message_user p {
+  margin: 0;
+}
+
+.chat_message_input {
+  width: 23em;
+  height: 90px;
+  padding: 10px;
+}
+
+.project_message_time {
+  margin: 0;
+  padding-bottom: 2em;
+  color: grey;
+}

@@ -1,0 +1,9 @@
+.project_chat_content {
+  inherits: unset;
+  width: 40em;
+  height: 40em;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  border-bottom: black 2px solid;
+}
