@@ -203,25 +203,25 @@ export default function MiniDrawer({ children }) {
             })}
           >
             <Toolbar>
-              {/* <HtmlTooltip
+              <HtmlTooltip
                 title={
                   <React.Fragment>
                     <Typography color="inherit">Feature Not Enabled</Typography>{" "}
                   </React.Fragment>
                 }
-              > */}
-              <IconButton
-                // color="inherit"
-                aria-label="open "
-                onClick={handleDrawerOpen}
-                edge="start"
-                className={clsx(classes.menuButton, {
-                  [classes.hide]: open,
-                })}
               >
-                <MenuIcon />
-              </IconButton>
-              {/* </HtmlTooltip> */}
+                <IconButton
+                  // color="inherit"
+                  aria-label="open "
+                  // onClick={handleDrawerOpen}
+                  edge="start"
+                  className={clsx(classes.menuButton, {
+                    [classes.hide]: open,
+                  })}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </HtmlTooltip>
               <Typography variant="h6" noWrap className={classes.app}>
                 {/* <strong>MAKE MY DAY</strong> */}
               </Typography>
