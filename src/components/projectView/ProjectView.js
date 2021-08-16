@@ -10,7 +10,7 @@ import {
   deleteTask,
   HaveProjectWithUsers,
   findIndex,
-} from "../../hooks/helpers";
+} from "hooks/helpers";
 import Gantt from "components/gantt/Gantt";
 import TasksBody from "components/drag_drop/TasksBody";
 import cloneDeep from "lodash/cloneDeep";
