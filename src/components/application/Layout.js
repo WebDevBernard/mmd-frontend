@@ -206,7 +206,9 @@ export default function MiniDrawer({ children }) {
               <HtmlTooltip
                 title={
                   <React.Fragment>
-                    <Typography color="inherit">Feature Not Enabled</Typography>{" "}
+                    <Typography color="inherit">
+                      Drawer Open Feature Not Enabled
+                    </Typography>{" "}
                   </React.Fragment>
                 }
               >
