@@ -109,16 +109,14 @@ export default function MiniDrawer({ children }) {
               <HtmlTooltip
                 title={
                   <React.Fragment>
-                    <Typography color="inherit">
-                      Drawer Feature Not Enabled
-                    </Typography>{" "}
+                    <Typography color="inherit">Feature Not Enabled</Typography>{" "}
                   </React.Fragment>
                 }
               >
                 <IconButton
                   // color="inherit"
-                  aria-label="open drawer"
-                  // onClick={handleDrawerOpen}
+                  aria-label="open "
+                  onClick={handleDrawerOpen}
                   edge="start"
                   className={clsx(classes.menuButton, {
                     [classes.hide]: open,
