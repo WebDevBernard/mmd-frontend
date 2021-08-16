@@ -1,4 +1,3 @@
-
 function reformatState(tasks, projects) {
   let projectsInState = {};
 
@@ -47,7 +46,6 @@ function reformatState(tasks, projects) {
         tasks: [],
       };
     }
-
   }
   return projectsInState;
 }
@@ -88,7 +86,7 @@ function listForProject(tasks) {
   ];
 
   if (!tasks.length) {
-    return listSchema
+    return listSchema;
   }
 
   for (let list of listSchema) {
@@ -120,7 +118,7 @@ function findIndex(id, tasks) {
       index = i;
     }
   }
-  return index
+  return index;
 }
 
 const HaveProjectWithUsers = (projects, users) => {
@@ -141,61 +139,59 @@ const HaveProjectWithUsers = (projects, users) => {
   return projectWithUsers;
 };
 
-const getIncompleteTasks = function(tasks, id) {
+const getIncompleteTasks = function (tasks, id) {
   let incompleteTasks = [];
 
   for (let task of tasks) {
-    if (task.user_id===id && task.status !== "Completed") {
-      incompleteTasks.push(task)
-    } 
+    if (task.user_id === id && task.status !== "Completed") {
+      incompleteTasks.push(task);
+    }
   }
-  
- return incompleteTasks;
-}
 
-const getProjectNames = function(tasks) {
-  const projectNames =[];
+  return incompleteTasks;
+};
+
+const getProjectNames = function (tasks) {
+  const projectNames = [];
   for (let task of tasks) {
-    if (!projectNames.includes(task.project_name)){
-projectNames.push(task.project_name)
+    if (!projectNames.includes(task.project_name)) {
+      projectNames.push(task.project_name);
     }
   }
   return projectNames;
-}
+};
 
-const getTaskForProject = function(tasks, project) {
-  let projects = []
+const getTaskForProject = function (tasks, project) {
+  let projects = [];
   for (let task of tasks) {
     if (task.project_name === project) {
-      projects.push(task)
+      projects.push(task);
     }
   }
-  return projects
-}
+  return projects;
+};
 
-const tasksForUser = function(tasks, id) {
+const tasksForUser = function (tasks, id) {
   let userTasks = [];
 
   for (let task of tasks) {
-    if (task.user_id===id) {
-      userTasks.push(task)
-    } 
+    if (task.user_id === id) {
+      userTasks.push(task);
+    }
   }
-  
- return userTasks;
-}
+
+  return userTasks;
+};
 
 const listForUser = function (lists, id) {
-
   for (let list of lists) {
-    let newTasks = list.tasks.filter(task => task.user_id === id)
-    list.tasks = newTasks
+    let newTasks = list.tasks.filter((task) => task.user_id === id);
+    list.tasks = newTasks;
   }
-  return lists
-}
+  return lists;
+};
 
-
-module.exports = {
+export {
   reformatState,
   listForProject,
   deleteTask,
@@ -205,5 +201,5 @@ module.exports = {
   getProjectNames,
   getTaskForProject,
   tasksForUser,
-  listForUser
+  listForUser,
 };
