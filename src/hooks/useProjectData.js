@@ -9,15 +9,16 @@ export default function useProjectData() {
   });
 
   useEffect(() => {
-    Promise.all([axios.get("/api/users"), axios.get("/api/projects")]).then(
-      (all) => {
-        setState({
-          ...state,
-          users: all[0].data,
-          projects: all[1].data,
-        });
-      }
-    );
+    Promise.all([
+      axios.get("https://makemydaydemo.herokuapp.com/api/users"),
+      axios.get("https://makemydaydemo.herokuapp.com/api/projects"),
+    ]).then((all) => {
+      setState({
+        ...state,
+        users: all[0].data,
+        projects: all[1].data,
+      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -79,8 +80,12 @@ export default function useProjectData() {
 
   const handleEdit = (projectId) => {
     Promise.all([
-      axios.get(`/api/projects/${projectId}`),
-      axios.get(`/api/user_projects/${projectId}`),
+      axios.get(
+        `https://makemydaydemo.herokuapp.com/api/projects/${projectId}`
+      ),
+      axios.get(
+        `https://makemydaydemo.herokuapp.com/api/user_projects/${projectId}`
+      ),
     ]).then((result) => {
       const { name, description, status, due_date } = result[0].data[0];
       setTitle(name);
