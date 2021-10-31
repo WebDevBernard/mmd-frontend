@@ -73,7 +73,10 @@ export default function Form(props) {
       return setOpenPopup(true);
     } else {
       axios
-        .put(`/api/projects/${projectId}/tasks/${taskId}`, editTask)
+        .put(
+          `https://makemydaydemo.herokuapp.com/api/projects/${projectId}/tasks/${taskId}`,
+          editTask
+        )
         .then((result) => {
           console.log("result in edit", result.data);
           return axios.get(

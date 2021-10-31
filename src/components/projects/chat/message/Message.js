@@ -61,7 +61,9 @@ export default function Message({ project }) {
 
   useEffect(() => {
     axios
-      .get(`/api/projects/${project.id}/messages`)
+      .get(
+        `https://makemydaydemo.herokuapp.com/projects/${project.id}/messages`
+      )
       .then((result) => {
         const messages = getMessagesWithUsers(result.data, project.users);
         setAllMessages([...messages]);
@@ -85,7 +87,10 @@ export default function Message({ project }) {
     };
 
     axios
-      .post(`/api/projects/${project.id}/messages`, newMessage)
+      .post(
+        `https://makemydaydemo.herokuapp.com/projects/${project.id}/messages`,
+        newMessage
+      )
       .then((result) => {
         const receivedMessage = result.data[0];
         receivedMessage["user"] = user;
