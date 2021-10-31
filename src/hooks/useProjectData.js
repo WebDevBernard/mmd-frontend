@@ -24,7 +24,7 @@ export default function useProjectData() {
 
   const handleDelete = (projectId) => {
     axios
-      .delete(`api/projects/${projectId}`)
+      .delete(`https://makemydaydemo.herokuapp.com/api/projects/${projectId}`)
       .then((result) => {
         axios.get(`api/projects`).then((result) => {
           setState({
@@ -136,30 +136,39 @@ export default function useProjectData() {
       newProject["modified_date"] = new Date().toISOString().split("T")[0];
 
       if (title && description) {
-        axios.put(`/api/projects/${param.id}`, newProject).then(() => {
-          axios.get(`/api/projects`).then((result) => {
-            setState({
-              ...state,
-              projects: result.data,
-            });
-            handleClose();
+        axios
+          .put(
+            `https://makemydaydemo.herokuapp.com/api/projects/${param.id}`,
+            newProject
+          )
+          .then(() => {
+            axios
+              .get(`https://makemydaydemo.herokuapp.com/api/projects`)
+              .then((result) => {
+                setState({
+                  ...state,
+                  projects: result.data,
+                });
+                handleClose();
+              });
           });
-        });
       }
     } else {
       newProject["start_date"] = new Date().toISOString().split("T")[0];
 
       if (title && description) {
         axios
-          .post(`/api/projects`, newProject)
+          .post(`https://makemydaydemo.herokuapp.com/api/projects`, newProject)
           .then(() => {
-            axios.get(`/api/projects`).then((result) => {
-              setState({
-                ...state,
-                projects: result.data,
+            axios
+              .get(`https://makemydaydemo.herokuapp.com/api/projects`)
+              .then((result) => {
+                setState({
+                  ...state,
+                  projects: result.data,
+                });
+                handleClose();
               });
-              handleClose();
-            });
           })
           .catch((err) => console.log(err.message));
       }

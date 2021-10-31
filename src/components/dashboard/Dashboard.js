@@ -33,9 +33,11 @@ function Dashboard() {
     tasks: [],
   });
   useEffect(() => {
-    axios.get("api/tasks").then((result) => {
-      setUserState((prev) => ({ ...prev, tasks: result.data }));
-    });
+    axios
+      .get("https://makemydaydemo.herokuapp.com/api/tasks")
+      .then((result) => {
+        setUserState((prev) => ({ ...prev, tasks: result.data }));
+      });
   }, []);
 
   console.log("user", user);
