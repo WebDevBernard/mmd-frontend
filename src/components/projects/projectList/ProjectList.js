@@ -6,7 +6,7 @@ import RotateLeftIcon from "@material-ui/icons/RotateLeft";
 import ProjectForm from "../projectForm/ProjectForm";
 import ProjectListItems from "../projectListItem/ProjectListItem";
 import useProjectData from "hooks/useProjectData";
-import "./ProjectList.css";
+import classes from "./ProjectList.css";
 import avatar from "images/avatar.jpg";
 import { MessageContextProvider } from "context/MessageContext";
 import {
@@ -16,6 +16,7 @@ import {
   Radio,
   RadioGroup,
   TextField,
+  Typography,
 } from "@material-ui/core";
 import UserSelector from "../userSelector/UserSelector";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -207,7 +208,14 @@ export default function ProjectList() {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {sortedProjects}
+            {sortedProjects === 0 ? (
+              <p style={{ fontSize: "1rem", position: "absolute" }}>
+                Please hit refresh, Heroku back-end is inactive after 30
+                minutes.
+              </p>
+            ) : (
+              sortedProjects
+            )}
           </Masonry>
         </MessageContextProvider>
       </body>
