@@ -208,7 +208,7 @@ export default function ProjectList() {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {sortedProjects === 0 ? (
+            {sortedProjects.length === 0 ? (
               <p style={{ fontSize: "1rem", position: "absolute" }}>
                 Please hit refresh, Heroku back-end is sleeping.
               </p>
