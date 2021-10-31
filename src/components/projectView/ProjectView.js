@@ -36,9 +36,9 @@ function ProjectView() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("/api/users"),
-      axios.get("/api/projects"),
-      axios.get("/api/tasks"),
+      axios.get("https://makemydaydemo.herokuapp.com/api/users"),
+      axios.get("https://makemydaydemo.herokuapp.com/api/projects"),
+      axios.get("https://makemydaydemo.herokuapp.com/api/tasks"),
     ])
       .then((result) => {
         // console.log("result in useEfect", result);

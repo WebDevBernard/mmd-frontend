@@ -77,7 +77,7 @@ export default function Form(props) {
         .then((result) => {
           console.log("result in edit", result.data);
           return axios.get(
-            `"https://makemydaydemo.herokuapp.com/api/tasks/${result.data.id}`
+            `https://makemydaydemo.herokuapp.com/api/tasks/${result.data.id}`
           );
 
           // let user = findUser(result.data.user_id, projectUsers);
