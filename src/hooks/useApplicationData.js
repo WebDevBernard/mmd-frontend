@@ -131,7 +131,7 @@ export default function useApplicationData() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/tasks")
+      .get("https://makemydaydemo.herokuapp.com/api/tasks")
       .then((result) => {
         let [initialListState, tasks] = updateLists(listSchema, result.data);
 
@@ -142,7 +142,7 @@ export default function useApplicationData() {
         }));
       })
       .catch((err) => console.log(err));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function updateDragDrop(destinationId, draggableId) {
@@ -150,7 +150,9 @@ export default function useApplicationData() {
     let newStatus = listSchema[destinationId - 1].name;
 
     axios
-      .put(`http://localhost:8080/api/tasks/${id}`, { status: newStatus })
+      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
+        status: newStatus,
+      })
       .then((result) => {
         // console.log("result in drag and drop---", result);
         let [listState, tasks] = updateLists(state.lists, result.data);
@@ -163,7 +165,7 @@ export default function useApplicationData() {
     const stateCopy = cloneDeep(state);
 
     axios
-      .post("http://localhost:8080/api/tasks", { name: name })
+      .post("https://makemydaydemo.herokuapp.com/api/tasks", { name: name })
       .then((result) => {
         // console.log("result------", result);
         let [listState, tasks] = updateLists(state.lists, result.data);
@@ -175,7 +177,7 @@ export default function useApplicationData() {
 
   function updateTask(id, name, start_date, end_date, status, priority) {
     axios
-      .put(`http://localhost:8080/api/tasks/${id}`, {
+      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
         name: name,
         status: status,
         start: start_date,
@@ -194,10 +196,12 @@ export default function useApplicationData() {
   function deleteTask(id) {
     const task = { ...state.tasks[id], tasks: null };
     const tasks = { ...state.tasks, [id]: task };
-    return axios.delete(`http://localhost:8080/api/tasks/${id}`).then(() => {
-      setState({ ...state, tasks });
-      updateTask(id);
-    });
+    return axios
+      .delete(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`)
+      .then(() => {
+        setState({ ...state, tasks });
+        updateTask(id);
+      });
   }
 
   return {
