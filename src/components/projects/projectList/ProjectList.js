@@ -210,7 +210,7 @@ export default function ProjectList() {
           >
             {sortedProjects.length === 0 ? (
               <p style={{ fontSize: "1rem", position: "absolute" }}>
-                Please hit refresh, Heroku back-end is sleeping.
+                Please wait, Heroku back-end is sleeping.
               </p>
             ) : (
               sortedProjects
