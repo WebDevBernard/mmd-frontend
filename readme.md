@@ -1,6 +1,6 @@
 ## About
 
-- Front-end for make my day app
+- Front-end for [MakeMyDay](https://github.com/WebDevBernard/MakeMyDay) app
 
 ## How to Reset Postgres Backend
 
