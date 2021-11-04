@@ -42,9 +42,6 @@ export default function Application() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <Redirect to="/projects" />
-            </Route>
-            <Route exact path="/projects">
               <ProjectList />
             </Route>
             <Route exact path="/projects/:id">
