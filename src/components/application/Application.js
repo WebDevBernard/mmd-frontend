@@ -50,6 +50,7 @@ export default function Application() {
             <Route exact path="/projects/:id/tasks">
               <ProjectView />
             </Route>
+        <Redirect to="/" />
           </Switch>
         </Layout>
       </Router>
