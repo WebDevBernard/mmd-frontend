@@ -42,6 +42,9 @@ export default function Application() {
         <Layout>
           <Switch>
             <Route exact path="/">
+              <Redirect to="/projects" />
+            </Route>
+            <Route exact path="/projects">
               <ProjectList />
             </Route>
             <Route exact path="/projects/:id">
@@ -50,7 +53,6 @@ export default function Application() {
             <Route exact path="/projects/:id/tasks">
               <ProjectView />
             </Route>
-        <Redirect to="/" />
           </Switch>
         </Layout>
       </Router>
