@@ -73,7 +73,7 @@ export default function Chat({ project }) {
             height: 40,
             color: "#8561c5",
           }}
-          onClick={handleClickOpen}
+//           onClick={handleClickOpen}
         />
       </HtmlTooltip>
       <Dialog
