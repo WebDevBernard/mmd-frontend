@@ -62,7 +62,7 @@ export default function Message({ project }) {
   useEffect(() => {
     axios
       .get(
-        `https://makemydaydemo.herokuapp.com/projects/${project.id}/messages`
+        `https://mmdapi-production.up.railway.app/projects/${project.id}/messages`
       )
       .then((result) => {
         const messages = getMessagesWithUsers(result.data, project.users);
@@ -88,7 +88,7 @@ export default function Message({ project }) {
 
     axios
       .post(
-        `https://makemydaydemo.herokuapp.com/projects/${project.id}/messages`,
+        `https://mmdapi-production.up.railway.app/projects/${project.id}/messages`,
         newMessage
       )
       .then((result) => {

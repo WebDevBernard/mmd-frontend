@@ -74,13 +74,13 @@ export default function Form(props) {
     } else {
       axios
         .put(
-          `https://makemydaydemo.herokuapp.com/api/projects/${projectId}/tasks/${taskId}`,
+          `https://mmdapi-production.up.railway.app/api/projects/${projectId}/tasks/${taskId}`,
           editTask
         )
         .then((result) => {
           console.log("result in edit", result.data);
           return axios.get(
-            `https://makemydaydemo.herokuapp.com/api/tasks/${result.data.id}`
+            `https://mmdapi-production.up.railway.app/api/tasks/${result.data.id}`
           );
 
           // let user = findUser(result.data.user_id, projectUsers);

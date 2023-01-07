@@ -34,7 +34,7 @@ function Dashboard() {
   });
   useEffect(() => {
     axios
-      .get("https://makemydaydemo.herokuapp.com/api/tasks")
+      .get("https://mmdapi-production.up.railway.app/api/tasks")
       .then((result) => {
         setUserState((prev) => ({ ...prev, tasks: result.data }));
       });

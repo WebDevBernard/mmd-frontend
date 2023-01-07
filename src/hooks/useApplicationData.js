@@ -131,7 +131,7 @@ export default function useApplicationData() {
 
   useEffect(() => {
     axios
-      .get("https://makemydaydemo.herokuapp.com/api/tasks")
+      .get("https://mmdapi-production.up.railway.app/api/tasks")
       .then((result) => {
         let [initialListState, tasks] = updateLists(listSchema, result.data);
 
@@ -150,7 +150,7 @@ export default function useApplicationData() {
     let newStatus = listSchema[destinationId - 1].name;
 
     axios
-      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
+      .put(`https://mmdapi-production.up.railway.app/api/tasks/${id}`, {
         status: newStatus,
       })
       .then((result) => {
@@ -165,7 +165,9 @@ export default function useApplicationData() {
     const stateCopy = cloneDeep(state);
 
     axios
-      .post("https://makemydaydemo.herokuapp.com/api/tasks", { name: name })
+      .post("https://mmdapi-production.up.railway.app/api/tasks", {
+        name: name,
+      })
       .then((result) => {
         // console.log("result------", result);
         let [listState, tasks] = updateLists(state.lists, result.data);
@@ -177,7 +179,7 @@ export default function useApplicationData() {
 
   function updateTask(id, name, start_date, end_date, status, priority) {
     axios
-      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
+      .put(`https://mmdapi-production.up.railway.app/api/tasks/${id}`, {
         name: name,
         status: status,
         start: start_date,
@@ -197,7 +199,7 @@ export default function useApplicationData() {
     const task = { ...state.tasks[id], tasks: null };
     const tasks = { ...state.tasks, [id]: task };
     return axios
-      .delete(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`)
+      .delete(`https://mmdapi-production.up.railway.app/api/tasks/${id}`)
       .then(() => {
         setState({ ...state, tasks });
         updateTask(id);

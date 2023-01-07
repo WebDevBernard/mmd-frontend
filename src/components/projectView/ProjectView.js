@@ -36,9 +36,9 @@ function ProjectView() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("https://makemydaydemo.herokuapp.com/api/users"),
-      axios.get("https://makemydaydemo.herokuapp.com/api/projects"),
-      axios.get("https://makemydaydemo.herokuapp.com/api/tasks"),
+      axios.get("https://mmdapi-production.up.railway.app/api/users"),
+      axios.get("https://mmdapi-production.up.railway.app/api/projects"),
+      axios.get("https://mmdapi-production.up.railway.app/api/tasks"),
     ])
       .then((result) => {
         // console.log("result in useEfect", result);
@@ -58,13 +58,13 @@ function ProjectView() {
   // console.log("users", users)
   const updateTask = function (id, start_date, end_date) {
     axios
-      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
+      .put(`https://mmdapi-production.up.railway.app/api/tasks/${id}`, {
         start: start_date,
         end: end_date,
       })
       .then((result) => {
         return axios.get(
-          `https://makemydaydemo.herokuapp.com/api/tasks/${result.data[0].id}`
+          `https://mmdapi-production.up.railway.app/api/tasks/${result.data[0].id}`
         );
       })
       .then((response) => {
@@ -109,7 +109,7 @@ function ProjectView() {
     let newStatus = listSchema[destinationId - 1].name;
 
     axios
-      .put(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`, {
+      .put(`https://mmdapi-production.up.railway.app/api/tasks/${id}`, {
         status: newStatus,
       })
       .then((result) => {
@@ -124,14 +124,14 @@ function ProjectView() {
 
   const createTask = function (name, id) {
     axios
-      .post("https://makemydaydemo.herokuapp.com/api/tasks", {
+      .post("https://mmdapi-production.up.railway.app/api/tasks", {
         name: name,
         project_id: id,
       })
       .then((result) => {
         console.log("result  after post req", result);
         return axios.get(
-          `https://makemydaydemo.herokuapp.com/api/tasks/${result.data[0].id}`
+          `https://mmdapi-production.up.railway.app/api/tasks/${result.data[0].id}`
         );
       })
       .then((responce) => {
@@ -148,7 +148,7 @@ function ProjectView() {
 
   const deleteTasks = function (id) {
     axios
-      .delete(`https://makemydaydemo.herokuapp.com/api/tasks/${id}`)
+      .delete(`https://mmdapi-production.up.railway.app/api/tasks/${id}`)
       .then((result) => {
         let project = cloneDeep(projects[result.data[0].project_id]);
         let newTask = deleteTask(result.data[0].id, project.tasks);

@@ -10,8 +10,8 @@ export default function useProjectData() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("https://makemydaydemo.herokuapp.com/api/users"),
-      axios.get("https://makemydaydemo.herokuapp.com/api/projects"),
+      axios.get("https://mmdapi-production.up.railway.app/api/users"),
+      axios.get("https://mmdapi-production.up.railway.app/api/projects"),
     ]).then((all) => {
       setState({
         ...state,
@@ -24,7 +24,9 @@ export default function useProjectData() {
 
   const handleDelete = (projectId) => {
     axios
-      .delete(`https://makemydaydemo.herokuapp.com/api/projects/${projectId}`)
+      .delete(
+        `https://mmdapi-production.up.railway.app/api/projects/${projectId}`
+      )
       .then((result) => {
         axios.get(`api/projects`).then((result) => {
           setState({
@@ -81,10 +83,10 @@ export default function useProjectData() {
   const handleEdit = (projectId) => {
     Promise.all([
       axios.get(
-        `https://makemydaydemo.herokuapp.com/api/projects/${projectId}`
+        `https://mmdapi-production.up.railway.app/api/projects/${projectId}`
       ),
       axios.get(
-        `https://makemydaydemo.herokuapp.com/api/user_projects/${projectId}`
+        `https://mmdapi-production.up.railway.app/api/user_projects/${projectId}`
       ),
     ]).then((result) => {
       const { name, description, status, due_date } = result[0].data[0];
@@ -138,12 +140,12 @@ export default function useProjectData() {
       if (title && description) {
         axios
           .put(
-            `https://makemydaydemo.herokuapp.com/api/projects/${param.id}`,
+            `https://mmdapi-production.up.railway.app/api/projects/${param.id}`,
             newProject
           )
           .then(() => {
             axios
-              .get(`https://makemydaydemo.herokuapp.com/api/projects`)
+              .get(`https://mmdapi-production.up.railway.app/api/projects`)
               .then((result) => {
                 setState({
                   ...state,
@@ -158,10 +160,13 @@ export default function useProjectData() {
 
       if (title && description) {
         axios
-          .post(`https://makemydaydemo.herokuapp.com/api/projects`, newProject)
+          .post(
+            `https://mmdapi-production.up.railway.app/api/projects`,
+            newProject
+          )
           .then(() => {
             axios
-              .get(`https://makemydaydemo.herokuapp.com/api/projects`)
+              .get(`https://mmdapi-production.up.railway.app/api/projects`)
               .then((result) => {
                 setState({
                   ...state,
